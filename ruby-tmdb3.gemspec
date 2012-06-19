@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     "lib/ruby-tmdb3/tmdb.rb",
     "lib/ruby-tmdb3/tmdb_cast.rb",
     "lib/ruby-tmdb3/tmdb_movie.rb",
-    "ruby-tmdb.gemspec",
+    "ruby-tmdb3.gemspec",
     "test/fixtures/blank_result.txt",
     "test/fixtures/example_com.txt",
     "test/fixtures/image.jpg",
