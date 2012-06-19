@@ -1,11 +1,11 @@
-= ruby-tmdb
+= ruby-tmdb3
 
-ruby-tmdb is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http://www.themoviedb.org/]. ruby-tmdb is designed to streamline common tasks associated with finding information about movies and cast members.
+ruby-tmdb3 is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http://www.themoviedb.org/]. ruby-tmdb3 uses tmdb's API v3 and is designed to streamline common tasks associated with finding information about movies and cast members.
   
 === Examples
 
   require 'rubygems'
-  require 'ruby-tmdb'
+  require 'ruby-tmdb3'
   
   # setup your API key
   Tmdb.api_key = "t478f8de5776c799de5a"
@@ -21,9 +21,9 @@ ruby-tmdb is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http:
   
 === Installation
 
-For ease of use ruby-tmdb is packaged as a Rubygem. Installing it is as simple as:
+For ease of use ruby-tmdb3 is packaged as a Rubygem. Installing it is as simple as:
 
-  gem install ruby-tmdb
+  gem install ruby-tmdb3
   
 === Usage
 
@@ -41,7 +41,7 @@ Parameters:
 [:title]           Specifies a query string to look for in the movie titles
 [:imdb]            Specifies an individual movie via it's IMDB id
 [:limit]           Specifies the maximum number of results to be returned
-[:expand_results]  The TMDb API by default returns only partial info for any API method that can return multiple results. When :expand_results is set to true ruby-tmdb automatically makes extra API calls to fetch the full information for each item. This can result in *very* slow requests though. If you only need basic information for a search listing then set this to false. Defaults to 'true'.
+[:expand_results]  The TMDb API by default returns only partial info for any API method that can return multiple results. When :expand_results is set to true ruby-tmdb3 automatically makes extra API calls to fetch the full information for each item. This can result in *very* slow requests though. If you only need basic information for a search listing then set this to false. Defaults to 'true'.
 [:language]        Allows you to override the default API language on a per-query basis.
 
 You must supply at least one of :id, :title, or :imdb. All other parameters are optional.
@@ -94,11 +94,12 @@ Get the info for a movie in French:
 
 === Item information
   
-To find out more about the information each object offers on retrieved items have a look at the {TMDb API Docs}[http://help.themoviedb.org/kb/api/about-3]. For the most accurate information about the information available have a look at the data directly through ruby-tmdb by calling @item.raw_data.inspect
+To find out more about the information each object offers on retrieved items have a look at the {TMDb API Docs}[http://help.themoviedb.org/kb/api/about-3]. For the most accurate information about the information available have a look at the data directly through ruby-tmdb3 by calling @item.raw_data.inspect
 
 === Author & Credits
 
-Author:: {Aaron Gough}[mailto:aaron@aarongough.com]
+Author:: {Irio Irineu Musskopf Junior}[mailto:iirineu@gmail.com], {Aaron Gough}[mailto:aaron@aarongough.com]
 Contributors:: {Alex Hayes}[https://github.com/alexhayes], {Alvaro Pereyra Rabanal}[https://github.com/xenda], {Linus Oleander}[https://github.com/oleander], {aristides}[https://github.com/aristides], {Robin Boutros}[https://github.com/niuage]
 
+Copyright (c) 2012 {Irio Irineu Musskopf Junior}[http://irio.posterous.com/] ({irio.posterous.com}[http://irio.posterous.com/])
 Copyright (c) 2010 {Aaron Gough}[http://thingsaaronmade.com/] ({thingsaaronmade.com}[http://thingsaaronmade.com/]), released under the MIT license
