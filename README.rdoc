@@ -98,8 +98,9 @@ To find out more about the information each object offers on retrieved items hav
 
 === Author & Credits
 
-Author:: {Irio Irineu Musskopf Junior}[mailto:iirineu@gmail.com], {Aaron Gough}[mailto:aaron@aarongough.com]
+Authors:: {Irio Irineu Musskopf Junior}[mailto:iirineu@gmail.com], {Aaron Gough}[mailto:aaron@aarongough.com]
 Contributors:: {Alex Hayes}[https://github.com/alexhayes], {Alvaro Pereyra Rabanal}[https://github.com/xenda], {Linus Oleander}[https://github.com/oleander], {aristides}[https://github.com/aristides], {Robin Boutros}[https://github.com/niuage]
 
 Copyright (c) 2012 {Irio Irineu Musskopf Junior}[http://irio.posterous.com/] ({irio.posterous.com}[http://irio.posterous.com/])
+
 Copyright (c) 2010 {Aaron Gough}[http://thingsaaronmade.com/] ({thingsaaronmade.com}[http://thingsaaronmade.com/]), released under the MIT license
