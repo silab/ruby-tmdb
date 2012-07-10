@@ -113,9 +113,10 @@ class Tmdb
     object.raw_data = data
     ["posters", "backdrops"].each do |image_array_name|
       image_array = Array object.send(image_array_name)
-      single_name = image_array_name.slice 0..-2
-      single_path = object.send "#{single_name}_path"
+      single_name = image_array_name.slice 0..-2 # singularize name
+      single_path = object.send "#{single_name}_path" # default poster/backdrop image
       image_array << object.send("#{image_array_name.slice 0..-2}=", DeepOpenStruct.load({file_path: single_path}))
+      # build a struct containing availables sizes with their urls
       image_array.each do |image|
         urls = CONFIGURATION.images.send("#{image_array_name}_sizes").inject({}) do |hash, size|
           hash[size] = {'url' => [CONFIGURATION.images.base_url, size, image.file_path].join}
@@ -123,9 +124,6 @@ class Tmdb
         end
         image.sizes = DeepOpenStruct.load urls
       end
-      #if(object.profile)
-      #object.profiles = object.profile
-      #end
     end
     unless(object.cast.nil?)
       object.cast.each_index do |x|
