@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-tmdb3"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Irio Irineu Musskopf Junior", "Aaron Gough"]
-  s.date = "2012-06-19"
+  s.date = "2012-07-11"
   s.description = "An ActiveRecord-style API wrapper for TheMovieDB.org"
   s.email = "iirineu@gmail.com"
   s.extra_rdoc_files = [
@@ -30,8 +30,11 @@ Gem::Specification.new do |s|
     "test/fixtures/example_com.txt",
     "test/fixtures/image.jpg",
     "test/fixtures/incorrect_api_url.txt",
+    "test/fixtures/movie_casts.txt",
     "test/fixtures/movie_get_info.txt",
     "test/fixtures/movie_imdb_lookup.txt",
+    "test/fixtures/movie_posters.txt",
+    "test/fixtures/movie_releases.txt",
     "test/fixtures/movie_search.txt",
     "test/fixtures/person_get_info.txt",
     "test/fixtures/person_search.txt",
@@ -47,7 +50,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/Irio/ruby-tmdb"
   s.rdoc_options = ["--line-numbers", "--inline-source"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.19"
+  s.rubygems_version = "1.8.24"
   s.summary = "An ActiveRecord-style API wrapper for TheMovieDB.org"
 
   if s.respond_to? :specification_version then
