@@ -85,9 +85,11 @@ class TmdbCastTest < Test::Unit::TestCase
     end
   end
 
-  test "should not pass language to Tmdb.api_call if language is not supplied" do
-    Tmdb.expects(:api_call).with("person", {id: "1"}, nil).returns(nil)
-    Tmdb.expects(:api_call).with("search/person", {query: "1"}, nil).returns(nil)
+  test "should pass default language to Tmdb.api_call if language is not supplied" do
+    Tmdb.expects(:api_call).
+      with("person", {id: "1"}, Tmdb.default_language).returns(nil)
+    Tmdb.expects(:api_call).
+      with("search/person", {query: "1"}, Tmdb.default_language).returns(nil)
     TmdbCast.find(:id => 1, :name => 1)
   end
 
@@ -107,7 +109,7 @@ class TmdbCastTest < Test::Unit::TestCase
   private
   
     def assert_cast_methodized(actor, cast_id)
-      @cast_data = Tmdb.api_call("person", {id: cast_id.to_s})
+      @cast_data = Tmdb.api_call("person", {id: cast_id.to_s}, Tmdb.default_language)
       assert_equal @cast_data["adult"], actor.adult
       assert_equal @cast_data["also_known_as"], actor.also_known_as
       assert_equal @cast_data["biography"], actor.biography

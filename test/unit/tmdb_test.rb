@@ -44,16 +44,6 @@ class TmdbTest < Test::Unit::TestCase
     assert_equal 404, test_response.code.to_i
   end
   
-  test "API call without explicit language setting should use default language" do
-    method = "search/movie"
-    data = "hello"
-    Tmdb.default_language = "es"
-    url = Tmdb.base_api_url + '/' + method + '?api_key=' + Tmdb.api_key + '&language=' + Tmdb.default_language + '&query=' + CGI::escape(data.to_s)
-    mock_response = stub(:code => "200", :body => '{"page":1,"results":[],"total_pages":0,"total_results":0}')
-    Tmdb.expects(:get_url).with(url).returns(mock_response)
-    Tmdb.api_call(method, {query: data})
-  end
-  
   test "API call with explicit language setting should override default language" do
     method = "movie"
     data = "hello"

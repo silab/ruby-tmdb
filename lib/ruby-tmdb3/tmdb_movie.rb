@@ -2,7 +2,8 @@ class TmdbMovie
   
   def self.find(options)
     options = {
-      :expand_results => true
+      :expand_results => true,
+      :language       => Tmdb.default_language
     }.merge(options)
     
     raise ArgumentError, "At least one of: id, title, imdb should be supplied" if(options[:id].nil? && options[:title].nil? && options[:imdb].nil?)

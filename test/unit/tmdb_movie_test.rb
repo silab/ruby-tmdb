@@ -92,9 +92,9 @@ class TmdbMovieTest < Test::Unit::TestCase
     end
   end
   
-  test "find should not pass language to Tmdb.api_call if language is not supplied" do
-    Tmdb.expects(:api_call).with("movie", {id: "1"}, nil).twice
-    Tmdb.expects(:api_call).with("search/movie", {query: "1"}, nil)
+  test "find should pass default language to Tmdb.api_call if language is not supplied" do
+    Tmdb.expects(:api_call).with("movie", {id: "1"}, Tmdb.default_language).twice
+    Tmdb.expects(:api_call).with("search/movie", {query: "1"}, Tmdb.default_language)
     TmdbMovie.find(:id => 1, :imdb => 1, :title => 1)
   end
   
@@ -117,7 +117,7 @@ class TmdbMovieTest < Test::Unit::TestCase
   private
     
     def assert_movie_methodized(movie, movie_id)
-      @movie_data = Tmdb.api_call("movie", {id: movie_id.to_s})
+      @movie_data = Tmdb.api_call("movie", {id: movie_id.to_s}, Tmdb.default_language)
       assert_equal @movie_data["adult"], movie.adult
       assert_equal @movie_data["budget"], movie.budget
       assert_equal @movie_data["homepage"], movie.homepage
