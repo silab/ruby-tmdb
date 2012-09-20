@@ -13,7 +13,7 @@ class TmdbMovie
       results << Tmdb.api_call("movie", {:id => options[:id].to_s}, options[:language])
     end
     unless(options[:title].nil? || options[:title].to_s.empty?)
-      data = {query: options[:title].to_s}
+      data = {:query => options[:title].to_s}
       unless options[:year].nil?
         data[:year] = options[:year].to_s
       end
