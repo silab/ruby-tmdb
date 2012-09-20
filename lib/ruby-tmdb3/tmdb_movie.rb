@@ -10,7 +10,7 @@ class TmdbMovie
     
     results = []
     unless(options[:id].nil? || options[:id].to_s.empty?)
-      results << Tmdb.api_call("movie", {id: options[:id].to_s}, options[:language])
+      results << Tmdb.api_call("movie", {:id => options[:id].to_s}, options[:language])
     end
     unless(options[:title].nil? || options[:title].to_s.empty?)
       data = {query: options[:title].to_s}
@@ -21,7 +21,7 @@ class TmdbMovie
       results << api_return["results"] if api_return
     end
     unless(options[:imdb].nil? || options[:imdb].to_s.empty?)
-      results << Tmdb.api_call("movie", {id: options[:imdb].to_s}, options[:language])
+      results << Tmdb.api_call("movie", {:id => options[:imdb].to_s}, options[:language])
       options[:expand_results] = true
     end
     
@@ -49,10 +49,10 @@ class TmdbMovie
     if(expand_results && (!raw_data.has_key?("posters") || !raw_data['releases'] || !raw_data['cast']))
       begin
         movie_id              = raw_data['id']
-        raw_data              = Tmdb.api_call 'movie', { id: movie_id }, language
-        @images_data          = Tmdb.api_call("movie/images", {id: movie_id}, language)
-        @releases_data        = Tmdb.api_call('movie/releases', {id: movie_id}, language)
-        @cast_data            = Tmdb.api_call('movie/casts', {id: movie_id}, language)
+        raw_data              = Tmdb.api_call 'movie', { :id => movie_id }, language
+        @images_data          = Tmdb.api_call("movie/images", {:id => movie_id}, language)
+        @releases_data        = Tmdb.api_call('movie/releases', {:id => movie_id}, language)
+        @cast_data            = Tmdb.api_call('movie/casts', {:id => movie_id}, language)
         raw_data['posters']   = @images_data['posters']
         raw_data['backdrops'] = @images_data['backdrops']
         raw_data['releases']  = @releases_data['countries']
