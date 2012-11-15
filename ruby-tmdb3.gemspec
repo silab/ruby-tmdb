@@ -61,17 +61,20 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<addressable>, [">= 0"])
       s.add_development_dependency(%q<webmock>, [">= 0"])
+      s.add_development_dependency(%q<mocha>, [">= 0.13.0"])
     else
       s.add_dependency(%q<deepopenstruct>, [">= 0.1.2"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<addressable>, [">= 0"])
       s.add_dependency(%q<webmock>, [">= 0"])
+      s.add_dependency(%q<mocha>, [">= 0.13.0"])
     end
   else
     s.add_dependency(%q<deepopenstruct>, [">= 0.1.2"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<addressable>, [">= 0"])
     s.add_dependency(%q<webmock>, [">= 0"])
+    s.add_dependency(%q<mocha>, [">= 0.13.0"])
   end
 end
 
