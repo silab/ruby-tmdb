@@ -1,0 +1,33 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.3.2)
+    crack (0.3.1)
+    deepopenstruct (0.1.2)
+    git (1.2.5)
+    jeweler (1.8.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
+    json (1.7.5)
+    metaclass (0.0.1)
+    mocha (0.13.0)
+      metaclass (~> 0.0.1)
+    rake (10.0.1)
+    rdoc (3.12)
+      json (~> 1.4)
+    webmock (1.9.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.1.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  addressable
+  deepopenstruct
+  jeweler
+  json
+  mocha
+  webmock
