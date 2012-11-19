@@ -10,4 +10,9 @@ class FetchTrailersWithExpansionEnabled < Test::Unit::TestCase
     assert_not_nil movie.trailers
     assert_equal movie.trailers[0].source, 'SUXWAEX2jlg'
   end
+
+  test "find without expansion enabled should not return trailers" do
+    movie = TmdbMovie.find :id => 187, expand_results: false
+    assert_nil movie.trailers
+  end
 end
