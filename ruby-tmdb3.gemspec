@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-tmdb3"
-  s.version = "0.3.3"
+  s.version = "0.3.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Irio Irineu Musskopf Junior", "Aaron Gough"]
-  s.date = "2012-09-15"
+  s.date = "2012-11-24"
   s.description = "An ActiveRecord-style API wrapper for TheMovieDB.org"
   s.email = "iirineu@gmail.com"
   s.extra_rdoc_files = [
@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
+    "Gemfile",
+    "Gemfile.lock",
     "MIT-LICENSE",
     "README.rdoc",
     "Rakefile",
@@ -36,12 +38,15 @@ Gem::Specification.new do |s|
     "test/fixtures/movie_posters.txt",
     "test/fixtures/movie_releases.txt",
     "test/fixtures/movie_search.txt",
+    "test/fixtures/movie_search_year.txt",
+    "test/fixtures/movie_trailers.txt",
     "test/fixtures/person_get_info.txt",
     "test/fixtures/person_search.txt",
     "test/setup/setup_api_key.rb",
     "test/setup/test_unit_extensions.rb",
     "test/setup/url_mocks.rb",
     "test/test_helper.rb",
+    "test/unit/fetch_trailers_with_expansion_enabled_test.rb",
     "test/unit/test_direct_require.rb",
     "test/unit/tmdb_cast_test.rb",
     "test/unit/tmdb_movie_test.rb",
@@ -57,24 +62,39 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<deepopenstruct>, [">= 0"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<addressable>, [">= 0"])
+      s.add_development_dependency(%q<mocha>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
       s.add_runtime_dependency(%q<deepopenstruct>, [">= 0.1.2"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<addressable>, [">= 0"])
       s.add_development_dependency(%q<webmock>, [">= 0"])
-      s.add_development_dependency(%q<mocha>, [">= 0.13.0"])
     else
+      s.add_dependency(%q<deepopenstruct>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<addressable>, [">= 0"])
+      s.add_dependency(%q<mocha>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
       s.add_dependency(%q<deepopenstruct>, [">= 0.1.2"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<addressable>, [">= 0"])
       s.add_dependency(%q<webmock>, [">= 0"])
-      s.add_dependency(%q<mocha>, [">= 0.13.0"])
     end
   else
+    s.add_dependency(%q<deepopenstruct>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<addressable>, [">= 0"])
+    s.add_dependency(%q<mocha>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
     s.add_dependency(%q<deepopenstruct>, [">= 0.1.2"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<addressable>, [">= 0"])
     s.add_dependency(%q<webmock>, [">= 0"])
-    s.add_dependency(%q<mocha>, [">= 0.13.0"])
   end
 end
 
