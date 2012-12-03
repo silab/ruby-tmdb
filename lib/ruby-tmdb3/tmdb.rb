@@ -70,11 +70,13 @@ class Tmdb
     if data.has_key?(:id)
       uri.query_values = query_values
     # Construct URL other queries
-    else
+    elsif data.has_key?(:query)
       query_values = {
         :query => CGI::escape(data[:query])
       }.merge(query_values)
       uri.query_values = query_values
+    else
+      #do nothing? had to add this to allow for upcoming movie searches
     end
     url            = [Tmdb.base_api_url, method, data[:id], action].compact.join '/'
     url_with_query = [url, uri.query].compact.join '?'
