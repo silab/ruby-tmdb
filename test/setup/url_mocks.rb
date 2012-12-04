@@ -14,8 +14,20 @@ def register_api_url_stubs
       stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/" + ".*")).to_return(file)
     end
     
-    File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_upcoming.txt")) do |file|
+    File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_list.txt")) do |file|
       stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/upcoming" + ".*")).to_return(file)
+    end
+    
+    File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_list.txt")) do |file|
+      stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/top_rated" + ".*")).to_return(file)
+    end
+    
+    File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_list.txt")) do |file|
+      stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/popular" + ".*")).to_return(file)
+    end
+    
+    File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_list.txt")) do |file|
+      stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/now_playing" + ".*")).to_return(file)
     end
     
     File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_posters.txt")) do |file|
