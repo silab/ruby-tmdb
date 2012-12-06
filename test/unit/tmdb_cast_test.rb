@@ -10,25 +10,25 @@ class TmdbCastTest < Test::Unit::TestCase
     movie = TmdbCast.find(:name => "item_not_found")
     assert_equal [], movie
   end
-  
+
   test "cast data should be able to be dumped and re-loaded" do
     assert_nothing_raised do
       cast = TmdbCast.find(:id => 287)
       TmdbCast.new(cast.raw_data)
     end
   end
-  
+
   test "find by id should return full cast data" do
     cast = TmdbCast.find(:id => 287)
     assert_cast_methodized(cast, 287)
   end
-  
+
   test "two cast objects with same data should be equal" do
     cast1 = TmdbCast.find(:id => 287, :limit => 1)
     cast2 = TmdbCast.find(:id => 287, :limit => 1)
     assert_equal cast1, cast2
   end
-  
+
   test "find by name should return full cast data when :expand_results = true" do
     cast = TmdbCast.find(:name => "Brad Pitt", :expand_results => true)
     cast = cast.first if cast.class == Array
@@ -44,7 +44,7 @@ class TmdbCastTest < Test::Unit::TestCase
   test "find by id should return a single cast member" do
     assert_kind_of OpenStruct, TmdbCast.find(:id => 287)
   end
-  
+
   test "find by name should return an array of cast members" do
     cast_members = TmdbCast.find(:name => "vince")
     assert_kind_of Array, cast_members
@@ -52,7 +52,7 @@ class TmdbCastTest < Test::Unit::TestCase
       assert_kind_of OpenStruct, actor
     end
   end
-  
+
   test "should raise error if limit is smaller than 1" do
     [0, -1, -100].each do |limit|
       assert_raise ArgumentError do
@@ -60,7 +60,7 @@ class TmdbCastTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   test "should raise error if limit is not an integer" do
     [1.001, "1.2", "hello", [1,2,3], {:test => "1"}].each do |limit|
       assert_raise ArgumentError do
@@ -68,12 +68,12 @@ class TmdbCastTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   test "should only return a single item if limit=1" do
     actor = TmdbCast.find(:name => "Vince", :limit => 1)
     assert_kind_of OpenStruct, actor
   end
-  
+
   test "should return X items if limit=X" do
     (2..5).each do |x|
       actors = TmdbCast.find(:name => "Vince", :limit => x)
@@ -107,7 +107,7 @@ class TmdbCastTest < Test::Unit::TestCase
   end
 
   private
-  
+
     def assert_cast_methodized(actor, cast_id)
       @cast_data = Tmdb.api_call("person", {:id => cast_id.to_s}, Tmdb.default_language)
       assert_equal @cast_data["adult"], actor.adult
