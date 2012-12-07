@@ -62,6 +62,33 @@ Find information about an individual cast member, or a set of cast members shari
 
 You must supply at least one of :id or :name. All other parameters are optional.
 
+==== TmdbList
+
+TmdbList is a class with 4 main methods
+
+  list = TmdbList.upcoming
+  list = TmdbList.now_playing
+  list = TmdbList.top_rated
+  list = TmdbList.popular
+
+Each method has an optional page and language arguments.
+
+  list = TmdbList.popular(2,"EN")
+
+A TmdbList instance has theses accessors
+
+  attr_accessor :page, :movie_ids, :total_pages, :total_results, :movies_data, :movies
+
+  list.movie_ids
+an array of tmdb movie ids.
+  list.movies_data 
+the original json data returned from tmdb.
+  list.movies 
+an array of TmdbList::Movie objects.
+
+A TmdbList::Movie object has these accessors.
+  
+  attr_accessor :backdrop_path, :id, :original_title, :release_date, :poster_path, :title, :vote_average, :vote_count
 
 === Usage Examples
 

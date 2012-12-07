@@ -1,6 +1,6 @@
 class TmdbList
   
-  class Nildata < StandardError; end;
+  class NilData < StandardError; end;
   class CorruptData < StandardError; end;
   
   attr_accessor :page, :movie_ids, :total_pages, :total_results, :movies_data, :movies
@@ -19,7 +19,7 @@ class TmdbList
   end
   
   def initialize(data)
-    raise Nildata if data.nil?
+    raise NilData if data.nil?
     begin
       self.movies_data = data
       self.page = data["page"]
