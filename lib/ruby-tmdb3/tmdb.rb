@@ -110,7 +110,7 @@ class Tmdb
   def self.get_url(uri_str, limit = 10)
     
     if Time.now < @@last_request_at+@@rate_limit_time #this will help avoid rate limit issues
-      sleep Time.now-@@last_request_at
+      sleep @@last_request_at+@@rate_limit_time-Time.now
     end
     @@last_request_at = Time.now
     return false if limit == 0
