@@ -79,12 +79,12 @@ A TmdbList instance has theses accessors
 
   attr_accessor :page, :movie_ids, :total_pages, :total_results, :movies_data, :movies
 
-  list.movie_ids
 an array of tmdb movie ids.
-  list.movies_data 
+  list.movie_ids
 the original json data returned from tmdb.
-  list.movies 
+  list.movies_data 
 an array of TmdbList::Movie objects.
+  list.movies 
 
 A TmdbList::Movie object has these accessors.
   
