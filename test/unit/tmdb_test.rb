@@ -19,6 +19,14 @@ class TmdbTest < Test::Unit::TestCase
     Tmdb.api_key = old_api_key
   end
   
+  test "should allow setting and getting of rate_limit_time" do
+    old_rate_limit_time = Tmdb.rate_limit_time
+    rate_limit_time = 2
+    Tmdb.rate_limit_time = rate_limit_time
+    assert_equal Tmdb.rate_limit_time, rate_limit_time
+    Tmdb.rate_limit_time = old_rate_limit_time
+  end
+  
   test "language should default to 'en'" do
     assert_equal "en", Tmdb.default_language
   end

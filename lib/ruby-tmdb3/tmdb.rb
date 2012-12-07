@@ -10,6 +10,8 @@ class Tmdb
   @@api_key = ""
   @@default_language = "en"
   @@api_response = {}
+  @@last_request_at = Time.now-3600
+  @@rate_limit_time = 0.34
 
   # TODO: Should be refreshed and cached from API 
   CONFIGURATION = DeepOpenStruct.load({ "images" =>
@@ -28,6 +30,14 @@ class Tmdb
   
   def self.api_key=(key)
     @@api_key = key
+  end
+  
+  def self.rate_limit_time
+    @@rate_limit_time
+  end
+  
+  def self.rate_limit_time=(time)
+    @@rate_limit_time = time
   end
   
   def self.default_language
@@ -98,6 +108,11 @@ class Tmdb
 
   # Get a URL and return a response object, follow upto 'limit' re-directs on the way
   def self.get_url(uri_str, limit = 10)
+    
+    if Time.now < @@last_request_at+@@rate_limit_time #this will help avoid rate limit issues
+      sleep Time.now-@@last_request_at
+    end
+    @@last_request_at = Time.now
     return false if limit == 0
     begin 
       response = Net::HTTP.get_response(URI.parse(uri_str))

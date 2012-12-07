@@ -15,6 +15,9 @@ ruby-tmdb3 is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http
   # setup your default language
   Tmdb.default_language = "en"
 
+  # change your rate limit. Default is 0.34
+  Tmdb.rate_limit_time = 0.34
+
   @movie = TmdbMovie.find(:title => "Iron Man", :limit => 1)
   # => <OpenStruct>
 
