@@ -64,7 +64,7 @@ You must supply at least one of :id or :name. All other parameters are optional.
 
 ==== TmdbList
 
-TmdbList is a class with 4 main methods
+TmdbList is a class with 5 main methods
 
   list = TmdbList.upcoming
   list = TmdbList.now_playing
@@ -90,7 +90,11 @@ All parameters are optional. The defaults are {page: 1, start_date: Time.now.str
 
 A TmdbList instance has theses accessors
 
-  attr_accessor :page, :movie_ids, :total_pages, :total_results, :movies_data, :movies
+  attr_accessor :page, :total_pages, :total_results, :movies_data, :movies
+
+And these methods
+
+  list.movie_ids #mapped array of movie id's
 
 an array of tmdb movie ids.
   list.movie_ids

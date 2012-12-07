@@ -3,7 +3,7 @@ class TmdbList
   class NilData < StandardError; end;
   class CorruptData < StandardError; end;
   
-  attr_accessor :page, :movie_ids, :total_pages, :total_results, :movies_data, :movies
+  attr_accessor :page, :total_pages, :total_results, :movies_data, :movies
   
   class Movie
     
@@ -23,7 +23,6 @@ class TmdbList
     begin
       self.movies_data = data
       self.page = data["page"]
-      self.movie_ids = data["results"].map{|r| r["id"]}
       self.movies = data["results"].map{|r| TmdbList::Movie.new(r)}
       self.total_pages = data["total_pages"]
       self.total_results = data["total_results"]
@@ -31,6 +30,11 @@ class TmdbList
       raise CorruptData, "Upcoming data wasn't in a structure we expected."
     end
   end
+  
+  def movie_ids
+    self.movies.map(&:id)
+  end
+  
   
   def self.upcoming(page = 1, language = nil)
     data = Tmdb.api_call("movie/upcoming", {page: page}, language)
