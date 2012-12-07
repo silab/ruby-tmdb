@@ -10,6 +10,11 @@ end
 
 class DirectRequireTest < Test::Unit::TestCase
   
+  def setup
+
+    Tmdb.rate_limit_time = 0
+  end
+  
   test "TmdbMovie should not raise exception when directly required without using rubygems" do
     assert_nothing_raised do
       TmdbMovie.find(:id => 187)

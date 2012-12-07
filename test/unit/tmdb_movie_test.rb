@@ -4,6 +4,7 @@ class TmdbMovieTest < Test::Unit::TestCase
 
   def setup
     register_api_url_stubs
+    Tmdb.rate_limit_time = 0
   end
   
   test "search that returns no results should create empty array" do

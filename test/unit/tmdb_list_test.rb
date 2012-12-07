@@ -6,6 +6,7 @@ class TmdbListTest < Test::Unit::TestCase
 
   def setup
     register_api_url_stubs
+    Tmdb.rate_limit_time = 0
   end
   
   test "should return upcoming movies" do
