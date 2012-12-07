@@ -30,6 +30,10 @@ def register_api_url_stubs
       stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/now_playing" + ".*")).to_return(file)
     end
     
+    File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_changes.txt")) do |file|
+      stub_request(:get, Regexp.new(Tmdb.base_api_url + "/movie/changes" + ".*")).to_return(file)
+    end
+    
     File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "movie_posters.txt")) do |file|
       stub_request(:get, Regexp.new(Tmdb.base_api_url + '/movie/\d+/images')).to_return(file)
     end

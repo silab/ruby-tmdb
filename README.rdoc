@@ -70,10 +70,23 @@ TmdbList is a class with 4 main methods
   list = TmdbList.now_playing
   list = TmdbList.top_rated
   list = TmdbList.popular
+  list = TmdbList.changes
 
-Each method has an optional page and language arguments.
+Each method except changes has an optional page and language arguments.
 
   list = TmdbList.popular(2,"EN")
+
+TmdbList.changes only has an options hash and the TmdbList:Movie objects are only populated with an id.
+  
+  list = TmdbList.changes({page: 1, start_date: '2012-03-25', end_date: '2012-03-25', language: 'EN'})
+  
+[:page]            Each page returns 100 results
+[:start_date]      Sets the start date for when a change occured
+[:end_date]        Sets the end date for when a change occured
+[:language]        See TmdbMovie
+
+All parameters are optional. The defaults are {page: 1, start_date: Time.now.strftime("%Y-%m-%d"), end_date: (Time.now+60*60*24).strftime("%Y-%m-%d"), language: "EN" }
+
 
 A TmdbList instance has theses accessors
 

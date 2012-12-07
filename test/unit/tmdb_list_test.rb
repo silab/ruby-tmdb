@@ -39,4 +39,16 @@ class TmdbListTest < Test::Unit::TestCase
     assert_equal "The Dark Knight Rises", list.movies[0].original_title
   end
   
+  test "should return a list of movies that have changed" do
+    list = TmdbList.changes({
+      page: 1,
+      start_date: "2012-03-25",
+      end_date: "2012-03-26"
+    })
+    assert_kind_of Array, list.movie_ids
+    assert_equal 77946, list.movie_ids.first
+  end
+  
+  
+  
 end

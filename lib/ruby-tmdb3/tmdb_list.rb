@@ -52,5 +52,15 @@ class TmdbList
     return TmdbList.new(data)
   end
   
-
+  def self.changes(options = {})
+    options = {
+      page: 1,
+      start_date: Time.now.strftime("%Y-%m-%d"),
+      end_date: (Time.now+60*60*24).strftime("%Y-%m-%d"),
+      language: "EN"
+    }.merge(options)
+    data = Tmdb.api_call('movie/changes', {:query => "page=#{options[:page]}&start_date=#{options[:start_date]}&end_date=#{options[:end_date]}"}, options[:language])
+    return TmdbList.new(data)
+  end
+  
 end
