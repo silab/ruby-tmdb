@@ -12,6 +12,10 @@ ruby-tmdb3 is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http
   # setup your API key
   Tmdb.api_key = "t478f8de5776c799de5a"
 
+  # (optional) setup your base url. This is provided for testing purposes by apiary.io when logged in.
+  # They provide a request and response log you can view from the web.
+  Tmdb.base_api_url = "http://private-xxxxx-themoviedb.apiary.io/3"
+
   # setup your default language
   Tmdb.default_language = "en"
 
@@ -50,6 +54,29 @@ Parameters:
 [:language]        Allows you to override the default API language on a per-query basis.
 
 You must supply at least one of :id, :title, or :imdb. All other parameters are optional.
+
+==== TmdbMovie.set_rating(id, rating, [:session_id])
+
+[:id]              Specifies an individual movie via it's TMDb id
+[:rating]          What you want to set the rating to.
+[:session_id]      (optional) If you don't have a session id it will be provided after the first requet. One session_id should be used per user.
+
+  status_code, session_id, message = TmdbMovie.set_rating(1, 7.9)
+  > status_code
+  => 1
+  > session_id
+  => "1234"
+  > message
+  => "success"
+
+
+  status_code, session_id, message = TmdbMovie.set_rating(2, 7.9, session_id: "1234")
+  > status_code
+  => 1
+  > session_id
+  => "1234"
+  > message
+  => "success"
 
 ==== TmdbCast.find([:id, :name, :limit, :expand_results, :language])
 

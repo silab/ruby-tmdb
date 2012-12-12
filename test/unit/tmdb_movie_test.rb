@@ -121,6 +121,18 @@ class TmdbMovieTest < Test::Unit::TestCase
     end
   end
 
+  test "TmdbMovie.set_rating without a session id should set a rating and return a session id" do
+    status_code, session_id, message = TmdbMovie.set_rating("1", 7.9)
+    assert_equal status_code, 1
+    assert_equal session_id, "0c550fd5da2fc3f321ab3bs9b60ca108"
+  end
+
+  test "TmdbMovie.set_rating with a session id should set a rating and return the same session id" do
+    status_code, session_id, message = TmdbMovie.set_rating("1", 7.9, session_id: "1234")
+    assert_equal status_code, 1
+    assert_equal session_id, "1234"
+  end
+
   private
     
     def assert_movie_methodized(movie, movie_id)
