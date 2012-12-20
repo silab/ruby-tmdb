@@ -60,6 +60,11 @@ class TmdbMovieTest < Test::Unit::TestCase
       assert_kind_of OpenStruct, movie
     end
   end
+
+  test "find by title with year should return movies from only that year" do
+    movie = TmdbMovie.find(:title => "Iron Man", :year => "2010", :expand_results => false)
+    assert_equal movie.id, 10138
+  end
     
   test "find by title with limit=1 should return a single movie" do
     assert_kind_of OpenStruct, TmdbMovie.find(:title => "Iron Man", :limit => 1)
@@ -109,6 +114,7 @@ class TmdbMovieTest < Test::Unit::TestCase
     Tmdb.expects(:api_call).with("movie/images", {:id => 999999999999}, nil).returns(nil)
     Tmdb.expects(:api_call).with("movie/releases", {:id => 999999999999}, nil).returns(nil)
     Tmdb.expects(:api_call).with("movie/casts", {:id => 999999999999}, nil).returns(nil)
+    Tmdb.expects(:api_call).with("movie/trailers", {:id => 999999999999}, nil).returns(nil)
     assert_raise ArgumentError do
       TmdbMovie.new({"id" => 999999999999}, true)
     end

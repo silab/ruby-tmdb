@@ -1,5 +1,4 @@
 *.gem
-test/setup/tmdb_api_key.txt
 .rvmrc
 .rbenv-version
 .DS_Store

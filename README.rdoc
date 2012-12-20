@@ -1,30 +1,32 @@
 = ruby-tmdb3
 
+{<img src="https://secure.travis-ci.org/Irio/ruby-tmdb.png?branch=master" alt="Build Status" />}[https://travis-ci.org/Irio/ruby-tmdb]
+
 ruby-tmdb3 is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http://www.themoviedb.org/]. ruby-tmdb3 uses tmdb's API v3 and is designed to streamline common tasks associated with finding information about movies and cast members.
-  
+
 === Examples
 
   require 'rubygems'
   require 'ruby-tmdb3'
-  
+
   # setup your API key
   Tmdb.api_key = "t478f8de5776c799de5a"
-  
+
   # setup your default language
   Tmdb.default_language = "en"
-  
+
   @movie = TmdbMovie.find(:title => "Iron Man", :limit => 1)
   # => <OpenStruct>
-  
+
   @movie.title
   # => "Iron Man"
-  
+
 === Installation
 
 For ease of use ruby-tmdb3 is packaged as a Rubygem. Installing it is as simple as:
 
   gem install ruby-tmdb3
-  
+
 === Usage
 
 There are 3 main methods you can use to get information about movies and cast members:
@@ -34,7 +36,7 @@ There are 3 main methods you can use to get information about movies and cast me
 Find information about an individual movie, or a set of movies that share a similar title, eg:
 
   TmdbMovie.find(:title => "fight club", :limit => 10, :expand_results => true, :language => "en")
-  
+
 Parameters:
 
 [:id]              Specifies an individual movie via it's TMDb id
@@ -51,7 +53,7 @@ You must supply at least one of :id, :title, or :imdb. All other parameters are 
 Find information about an individual cast member, or a set of cast members sharing similar names, eg:
 
   TmdbCast.find( :id => 123, :name => "Brad", :limit => 1, :expand_results => true)
-  
+
 [:id]              Specifies an individual cast member via their TMDb id
 [:name]            Specifies a query string to look for in the cast names
 [:limit]           See TmdbMovie
@@ -66,34 +68,34 @@ You must supply at least one of :id or :name. All other parameters are optional.
 Find all movies whose titles match a given string:
 
   @movies = TmdbMovie.find(:title => 'Iron Man')
-  
+
 Find the movie most likely to be associated with a given title:
 
   @movie = TmdbMovie.find(:title => 'Sin City', :limit => 1)
-  
+
 Find a single movie by it's TMDb ID:
 
   @movie = TmdbMovie.find(:id => 187)
-  
+
 Find a single movie by it's IMDB ID:
 
   @movie = TmdbMovie.find(:imdb => 'tt0401792')
-  
+
 Find all cast members whose names match a given string:
 
   @actors = TmdbCast.find(:name => 'Fred')
-  
+
 Find an individual cast member via their TMDb ID:
 
   @actor = TmdbCast.find(:id => 101)
-  
+
 Get the info for a movie in French:
 
   @movie = TmdbMovie.find(:title => 'Sin City', :limit => 1, :language => "fr")
 
 
 === Item information
-  
+
 To find out more about the information each object offers on retrieved items have a look at the {TMDb API Docs}[http://help.themoviedb.org/kb/api/about-3]. For the most accurate information about the information available have a look at the data directly through ruby-tmdb3 by calling @item.raw_data.inspect
 
 === Author & Credits
