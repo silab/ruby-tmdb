@@ -37,22 +37,22 @@ class TmdbList
   
   
   def self.upcoming(page = 1, language = nil)
-    data = Tmdb.api_call("movie/upcoming", {page: page}, language)
+    data = Tmdb.api_call("movie/upcoming", {:page => page}, language)
     return TmdbList.new(data)
   end
   
   def self.now_playing(page = 1, language = nil)
-    data = Tmdb.api_call("movie/now_playing", {page: page}, language)
+    data = Tmdb.api_call("movie/now_playing", {:page => page}, language)
     return TmdbList.new(data)
   end
   
   def self.top_rated(page = 1, language = nil)
-    data = Tmdb.api_call("movie/top_rated", {page: page}, language)
+    data = Tmdb.api_call("movie/top_rated", {:page => page}, language)
     return TmdbList.new(data)
   end
   
   def self.popular(page = 1, language = nil)
-    data = Tmdb.api_call("movie/upcoming", {page: page}, language)
+    data = Tmdb.api_call("movie/upcoming", {:page => page}, language)
     return TmdbList.new(data)
   end
   
