@@ -10,7 +10,7 @@ class TmdbMovie
       response = Tmdb.api_call("authentication/guest_session/new", {}, options[:language])
       session_id = response["guest_session_id"]
     end
-    response = Tmdb.api_call("movie/rating", {id: id, guest_session_id: session_id, value: rating}, options[:language], true)
+    response = Tmdb.api_call("movie/rating", {:id=> id, :guest_session_id=> session_id, :value=> rating}, options[:language], true)
     return {
       :status_code=> response["status_code"], 
       :session_id=> session_id, 
