@@ -4,6 +4,16 @@
 
 ruby-tmdb3 is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http://www.themoviedb.org/]. ruby-tmdb3 uses tmdb's API v3 and is designed to streamline common tasks associated with finding information about movies and cast members.
 
+=== Installation
+
+For ease of use ruby-tmdb3 is packaged as a Rubygem. Installing it is as simple as:
+
+  gem install ruby-tmdb3
+
+=== Compatibility
+
+Ruby 1.8.x & 1.9.x (2.0.x experimental)
+
 === Examples
 
   require 'rubygems'
@@ -20,16 +30,6 @@ ruby-tmdb3 is an ActiveRecord-style API wrapper for {TheMovieDB.org (TMDb)}[http
 
   @movie.title
   # => "Iron Man"
-
-=== Installation
-
-For ease of use ruby-tmdb3 is packaged as a Rubygem. Installing it is as simple as:
-
-  gem install ruby-tmdb3
-
-=== Compatability
-
-Ruby 1.8.x & 1.9.x
 
 === Usage
 
