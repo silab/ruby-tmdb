@@ -12,9 +12,9 @@ class TmdbMovie
     end
     response = Tmdb.api_call("movie/rating", {id: id, guest_session_id: session_id, value: rating}, options[:language], true)
     return {
-      status_code: response["status_code"], 
-      session_id: session_id, 
-      status_message: response["status_message"]
+      :status_code=> response["status_code"], 
+      :session_id=> session_id, 
+      :status_message=> response["status_message"]
     }
   end
   
