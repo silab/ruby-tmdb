@@ -5,7 +5,7 @@ class FetchTrailersWithExpansionEnabled < Test::Unit::TestCase
     register_api_url_stubs
     Tmdb.rate_limit_time = 0
   end
-  
+
   test "find with expansion enabled should return trailers" do
     movie = TmdbMovie.find(:id => 187)
     assert_not_nil movie.trailers
@@ -13,7 +13,7 @@ class FetchTrailersWithExpansionEnabled < Test::Unit::TestCase
   end
 
   test "find without expansion enabled should not return trailers" do
-    movie = TmdbMovie.find :id => 187, expand_results: false
+    movie = TmdbMovie.find :id => 187, :expand_results => false
     assert_nil movie.trailers
   end
 end
