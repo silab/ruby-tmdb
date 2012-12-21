@@ -60,14 +60,12 @@ class TmdbList
     options = {
       page: 1,
       start_date: Time.now.strftime("%Y-%m-%d"),
-      end_date: (Time.now+60*60*24).strftime("%Y-%m-%d"),
-      language: "EN"
+      end_date: (Time.now+86400).strftime("%Y-%m-%d") #by default pull 1 days worth of changes
     }.merge(new_options)
     data = Tmdb.api_call('movie/changes', {
       :page => options[:page], 
       :start_date=> options[:start_date],
-      :end_date=> options[:end_date],
-      language: "EN"
+      :end_date=> options[:end_date]
     })
     return TmdbList.new(data)
   end

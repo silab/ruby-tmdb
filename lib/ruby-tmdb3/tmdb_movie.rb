@@ -11,7 +11,11 @@ class TmdbMovie
       session_id = response["guest_session_id"]
     end
     response = Tmdb.api_call("movie/rating", {id: id, guest_session_id: session_id, value: rating}, options[:language], true)
-    return response["status_code"], session_id, response["status_message"]
+    return {
+      status_code: response["status_code"], 
+      session_id: session_id, 
+      status_message: response["status_message"]
+    }
   end
   
   def self.find(options)
